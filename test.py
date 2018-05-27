@@ -1,22 +1,18 @@
 
-from urllib import request
-import json
+import turtle
 
-def fetch_data(url):
-    with request.urlopen(url) as f:
-        data = f.read()
-        a = json.loads(data)
-        
 
-    return(a)
+def spiral(num_lines, step_size):
+    n = 1
+    for i in range(num_lines):
+        turtle.forward(n*step_size+1)
+        turtle.left(90)
+        n = n + 1
+        if i % 2 == 0:
+            n -= 1
+    turtle.exitonclick()
 
 
 if __name__ == '__main__':
-    URL = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20%3D%202151330&format=json'
-    data = fetch_data(URL)
-    #print(data)
-    assert data['query']['results']['channel']['location']['city'] == 'Beijing'
-    print('ok')
-
-
-    pass
+    spiral(20, 20)
+    
